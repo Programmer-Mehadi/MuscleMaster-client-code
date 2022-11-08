@@ -3,17 +3,19 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import logo from '../../musclemaster-logo.png';
+import './TopNavbar.css';
 const TopNavbar = () => {
     return (
         <div>
-            <Navbar  bg="light" expand="lg">
+            <Navbar className='navbar' bg="light" expand="lg">
                 <Container fluid className='container'>
-                    <Navbar.Brand href="#">MuscleMaster</Navbar.Brand>
+                    <Navbar.Brand href="#"><img style={{width:'250px'}} src={logo} alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll" className=''>
                         <Nav
-                            className="ms-auto  my-2 my-lg-0"
-                            style={{ maxHeight: '100px' }}
+                            className="ms-auto h5 my-2 my-lg-0 font-weight-bold"
+                            style={{ maxHeight: '100px',color:'#4D331F' }}
                             navbarScroll
                         >
                             
