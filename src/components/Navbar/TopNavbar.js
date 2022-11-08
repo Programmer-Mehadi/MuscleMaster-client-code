@@ -15,7 +15,7 @@ const TopNavbar = () => {
                     <Navbar.Collapse id="navbarScroll" className=''>
                         <Nav
                             className="ms-auto h5 my-2 my-lg-0 font-weight-bold"
-                            style={{ maxHeight: '100px',color:'#4D331F' }}
+                            style={{ minHeight: '100px',color:'#4D331F' }}
                             navbarScroll
                         >
                             
