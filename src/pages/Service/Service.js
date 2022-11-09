@@ -64,13 +64,13 @@ const Service = () => {
                                     <Form.Label>Give a review</Form.Label>
                                     <div><textarea name="reviewtext" id="" className='w-100' rows="3"></textarea> </div>
                                 </Form.Group>
+                                <h6 className='pt-3 pb-2'>Give Rating</h6>
                                 <select class="form-select w-25" aria-label="Default select example" onChange={handleRatingChange}>
-                                    <option selected>Give rating</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
-                                    <option value="5">5</option>
+                                    <option value="5" selected>5</option>
                                 </select>
                                 <button type='submit' className='btn btn-primary my-4'>Add Review</button>
                             </Form>
