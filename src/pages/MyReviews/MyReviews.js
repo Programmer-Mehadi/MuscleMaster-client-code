@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../customContexts/AuthProvider';
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -21,6 +22,7 @@ const MyReviews = () => {
 
             })
     }
+
     return (
         <div className='container py-5'>
             <h4 className='text-center'>All Reviews</h4>
@@ -44,7 +46,11 @@ const MyReviews = () => {
                                 <td>{review.reviewText}</td>
                                 <td>{review.serviceName}</td>
                                 <td>{review.rating}</td>
-                                <td style={{ fontSize: '20px' }}><AiFillEdit className='text-info' /><AiTwotoneDelete className='ms-2 text-danger' onClick={() => deleteReview(review._id)} /></td>
+                                <td style={{ fontSize: '20px' }}
+                                >
+                                    <Link to={`/editreview/${review._id}`}><AiFillEdit className='text-info' /></Link>
+
+                                    <AiTwotoneDelete className='ms-2 text-danger' onClick={() => deleteReview(review._id)} /></td>
                             </tr>
                         ))
 

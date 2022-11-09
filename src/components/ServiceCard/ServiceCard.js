@@ -12,10 +12,10 @@ const ServiceCard = ({ service }) => {
     const { _id, image, serviceName, rating, price, description } = service;
     return (
         <Col >
-            <Card className="shadow" style={{ marginBottom: '10px', minHeight: '450px' }}>
+            <Card className="shadow rounded-0" style={{ marginBottom: '10px', minHeight: '450px' }}>
                 <PhotoProvider>
                     <PhotoView src={image}>
-                        <img src={image} alt="" className='p-3 image' style={{ height: '200px', borderRadius: '5px !important' }} />
+                        <img src={image} alt="" className='p-3 image' style={{ height: '200px' }} />
                     </PhotoView>
                 </PhotoProvider>
                 <Card.Body>
@@ -33,7 +33,7 @@ const ServiceCard = ({ service }) => {
 
                     </Table>
 
-                    <Button className='w-100 rounded' variant="primary"> <Link style={{ color: 'white', textDecoration: 'none' }} to={`/services/${_id}`}>View details</Link> </Button>
+                    <Button className='w-100 rounded-0' variant="primary"> <Link style={{ color: 'white', textDecoration: 'none' }} to={`/services/${_id}`}>View details</Link> </Button>
                 </Card.Body>
             </Card>
         </Col>
