@@ -4,6 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../customContexts/AuthProvider';
 const Service = () => {
     const serviceData = useLoaderData();
+    const [reviewRating, setReviewRating] = useState(5);
     const { _id, image, serviceName, rating, price, description } = serviceData;
     const [reviews, setReviews] = useState([]);
     const { user } = useContext(AuthContext);
@@ -17,12 +18,13 @@ const Service = () => {
         e.preventDefault()
         const reviewText = e.target.reviewtext.value;
         if (reviewText !== "") {
-            const review = { reviewText: '', serviceId: '', userId: '', userName: '', userPhoto: '', time: '' };
+            const review = { reviewText: '', serviceId: '', userId: '', userName: '', userPhoto: '', rating: '', time: '' };
             review['reviewText'] = reviewText;
             review['serviceId'] = _id;
             review['userId'] = user.uid;
             review['userName'] = user.displayName;
             review['userPhoto'] = user.photoURL;
+            review['rating'] = reviewRating;
             // review['time'] = new Date();
             console.log(review)
             fetch('http://localhost:5000/addreview', {
@@ -41,6 +43,9 @@ const Service = () => {
                 })
         }
     }
+    const handleRatingChange = (event) => {
+        setReviewRating(event.target.value)
+    }
     return (
         <div className='container'>
             <img src={image} className='w-100 my-4' style={{ height: '400px' }} alt="" />
@@ -58,12 +63,21 @@ const Service = () => {
                                     <Form.Label>Give a review</Form.Label>
                                     <div><textarea name="reviewtext" id="" className='w-100' rows="3"></textarea> </div>
                                 </Form.Group>
-                                <button type='submit' className='btn btn-primary'>Add Review</button>
+                                <select class="form-select w-25" aria-label="Default select example" onChange={handleRatingChange}>
+                                    <option selected>Give rating</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <button type='submit' className='btn btn-primary my-4'>Add Review</button>
                             </Form>
                                 :
                                 <p className='my-4 btn-primary' >Please
                                     <Link className='h-full my-auto ms-2' to='/login'>Login</Link> for give review
                                 </p>
+
                         }
                     </div>
                     <div className='py-5'>
@@ -73,11 +87,11 @@ const Service = () => {
                                     <div className='d-flex items-align-center'>
                                         <img className='border border-dark' src={review.userPhoto} alt="" style={{ height: '40px', width: '40px', borderRadius: '5%' }} />
                                         <h6 className=' ms-2'>{review.userName}</h6>
-                                        
+
                                     </div>
-                                    <div className='text-danger'>1.9</div>
+                                    <div className='text-danger'>{review.rating}</div>
                                 </div>
-                                <p style={{marginLeft:'46px'}}>{review.reviewText}</p>
+                                <p style={{ marginLeft: '46px' }}>{review.reviewText}</p>
                                 <hr />
                             </div>)
                         }
