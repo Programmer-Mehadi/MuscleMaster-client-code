@@ -12,7 +12,7 @@ const Service = () => {
             .then(res => res.json())
             .then(data =>
                 setReviews(data))
-    }, [reviews])
+    }, [])
     const handleReviewSubmit = (e) => {
         e.preventDefault()
         const reviewText = e.target.reviewtext.value;
@@ -66,11 +66,19 @@ const Service = () => {
                                 </p>
                         }
                     </div>
-                    <div>
+                    <div className='py-5'>
                         {
-                            reviews.map(review => <div>
-                                <img src="" alt="" />
-                                <h4></h4>
+                            reviews.map(review => <div className='py-2'>
+                                <div className='d-flex justify-content-between'>
+                                    <div className='d-flex items-align-center'>
+                                        <img className='border border-dark' src={review.userPhoto} alt="" style={{ height: '40px', width: '40px', borderRadius: '5%' }} />
+                                        <h6 className=' ms-2'>{review.userName}</h6>
+                                        
+                                    </div>
+                                    <div className='text-danger'>1.9</div>
+                                </div>
+                                <p style={{marginLeft:'46px'}}>{review.reviewText}</p>
+                                <hr />
                             </div>)
                         }
                     </div>
