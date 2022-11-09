@@ -8,7 +8,6 @@ import logo from '../../musclemaster-logo.png';
 import './TopNavbar.css';
 const TopNavbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
     const signOut = () => {
         logOut()
             .then(result => {

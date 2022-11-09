@@ -18,14 +18,15 @@ const Service = () => {
         e.preventDefault()
         const reviewText = e.target.reviewtext.value;
         if (reviewText !== "") {
-            const review = { reviewText: '', serviceId: '', userId: '', userName: '', userPhoto: '', rating: '', time: '' };
+            const review = { reviewText: '', serviceId: '', serviceName: '', userId: '', userName: '', userPhoto: '', rating: '', time: '' };
             review['reviewText'] = reviewText;
             review['serviceId'] = _id;
+            review['serviceName'] = serviceName;
             review['userId'] = user.uid;
             review['userName'] = user.displayName;
             review['userPhoto'] = user.photoURL;
             review['rating'] = reviewRating;
-            // review['time'] = new Date();
+            review['time'] = new Date();
             console.log(review)
             fetch('http://localhost:5000/addreview', {
                 method: 'POST',
