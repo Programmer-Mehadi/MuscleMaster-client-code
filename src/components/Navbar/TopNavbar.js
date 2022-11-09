@@ -8,13 +8,13 @@ import './TopNavbar.css';
 const TopNavbar = () => {
     return (
         <div>
-            <Navbar className='navbar' bg="light" expand="lg">
-                <Container fluid className='container'>
-                    <Navbar.Brand href="#"><img style={{width:'250px'}} src={logo} alt="" /></Navbar.Brand>
+            <Navbar className='navbar' bg="light" expand="lg" style={{height:'58px'}}>
+                <Container fluid className='container' style={{height:'58px'}}>
+                    <Navbar.Brand href="#"><img style={{width:'250px',height:'58px'}} src={logo} alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll" className=''>
                         <Nav
-                            className="ms-auto h5 my-2 my-lg-0 font-weight-bold"
+                            className="ms-auto my-auto h5  my-lg-0 font-weight-bold flex align-items-center bg-white"
                             style={{ minHeight: '100px',color:'#4D331F' }}
                             navbarScroll
                         >
