@@ -47,7 +47,7 @@ const Footer = () => {
                                 Top Services
                             </p>
                             <CDBBox display="flex" flex="column" style={{ cursor: 'pointer' }}>
-                                {services.map(service => <CDBFooterLink  key={service._id}><Link to={`/service/${service._id}`}>{service.serviceName}</Link></CDBFooterLink>)}
+                                {services.map(service => <CDBFooterLink  key={service._id}><Link to={`/services/${service._id}`}>{service.serviceName}</Link></CDBFooterLink>)}
 
                             </CDBBox>
                         </CDBBox>

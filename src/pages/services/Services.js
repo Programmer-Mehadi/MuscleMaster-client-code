@@ -7,6 +7,7 @@ const Services = () => {
     const services = useLoaderData()
     return (
         <div className='container py-5'>
+            <h2 className='text-center underline pt-3 pb-5'>All Services Here</h2>
             <Row xs={1} md={2} lg={3} className="g-2">
                 {Array.from({ length: 1 }).map((_, idx) => (
                     <>
@@ -16,6 +17,7 @@ const Services = () => {
                     </>
                 ))}
             </Row>
+          
         </div>
     );
 };
