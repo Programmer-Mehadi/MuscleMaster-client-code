@@ -13,7 +13,13 @@ const MyReviews = () => {
         console.log(id);
         fetch(`http://localhost:5000/deletereview/${id}`)
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    const newReviews = reviews.filter(review => review._id !== id);
+                    setReviews(newReviews);
+                }
+
+            })
     }
     return (
         <div className='container py-5'>
