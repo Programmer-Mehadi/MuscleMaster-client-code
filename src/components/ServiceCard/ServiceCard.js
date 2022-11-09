@@ -3,6 +3,8 @@ import { Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import { Link } from 'react-router-dom';
 
 import './ServiceCard.css';
@@ -11,7 +13,11 @@ const ServiceCard = ({ service }) => {
     return (
         <Col >
             <Card className="shadow" style={{ marginBottom: '10px', minHeight: '450px' }}>
-                <Card.Img variant="top" className='p-3 image' style={{ height: '200px', borderRadius: '5px !important' }} src={image} />
+                <PhotoProvider>
+                    <PhotoView src={image}>
+                        <img src={image} alt="" className='p-3 image' style={{ height: '200px', borderRadius: '5px !important' }} />
+                    </PhotoView>
+                </PhotoProvider>
                 <Card.Body>
                     <Card.Title>{serviceName}</Card.Title>
                     <Card.Text>
@@ -20,11 +26,11 @@ const ServiceCard = ({ service }) => {
                     <Table striped bordered rounded hover>
                         <thead>
                             <tr>
-                                <th className='text-center'>{price}<br/>Price</th>
-                                <th className='text-center'>{rating}<br/>Rating</th>
+                                <th className='text-center'>{price}<br />Price</th>
+                                <th className='text-center'>{rating}<br />Rating</th>
                             </tr>
                         </thead>
-                     
+
                     </Table>
 
                     <Button className='w-100 rounded' variant="primary"> <Link style={{ color: 'white', textDecoration: 'none' }} to={`/services/${_id}`}>View details</Link> </Button>
