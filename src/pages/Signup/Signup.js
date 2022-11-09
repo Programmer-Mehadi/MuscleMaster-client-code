@@ -4,6 +4,24 @@ import Form from 'react-bootstrap/Form';
 import { BsGoogle } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 const Signup = () => {
+
+    const location = useLocation();
+    const from = location?.state?.form?.pathname || '/';
+    const navigate = useNavigate();
+    if (user && user.uid) {
+        return <Navigate to="/"></Navigate>
+    }
+    const handleGoogleSignin = () => {
+        const provider = new GoogleAuthProvider();
+        providerLogin(provider)
+            .then(result => {
+                console.log(result);
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
     return (
         <div className='container mw-50 py-4 form-section'>
             <Form className='form mw-50 h-100 mx-auto' >
@@ -35,7 +53,7 @@ const Signup = () => {
                     Signup
                 </Button>
                 <p className='pt-2'>Already have an account?<Link className='ms-1' to='/login' >Login</Link> </p>
-                <Button className='my-4 w-100 d-flex justify-content-center align-items-center'>
+                <Button className='my-4 w-100 d-flex justify-content-center align-items-center' onClick={handleGoogleSignin}>
                     <BsGoogle className='' />
                     <span className='h-full my-auto ms-2'>Continue With Google</span></Button>
             </Form>
