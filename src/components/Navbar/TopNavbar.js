@@ -19,14 +19,14 @@ const TopNavbar = () => {
     }
     return (
         <div>
-            <Navbar className='navbar' bg="light" expand="lg" style={{ height: '58px' }}>
+            <Navbar className='navbar'  expand="lg" style={{ height: '58px' }}>
                 <Container fluid className='container' style={{ height: '58px' }}>
                     <Navbar.Brand href="#"><img style={{ width: '250px', height: '58px' }} src={logo} alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll" className=''>
                         <Nav
-                            className="ms-auto my-auto h5  my-lg-0 font-weight-bold flex align-items-center "
-                            style={{ minHeight: '100px', color: '#4D331F' }}
+                            className="ms-auto my-auto h6  my-lg-0 font-weight-bold flex align-items-center "
+                            style={{ minHeight: '100px', color: 'white' }}
                             navbarScroll
                         >
 

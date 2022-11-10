@@ -1,7 +1,6 @@
-import { CDBBox, CDBBtn, CDBFooter, CDBFooterLink, CDBIcon } from 'cdbreact';
 import React, { useEffect, useState } from 'react';
+import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { Link } from 'react-router-dom';
-import logo from '../../musclemaster-logo.png';
 import './Footer.css';
 const Footer = () => {
     const [services, setServices] = useState([]);
@@ -11,66 +10,85 @@ const Footer = () => {
             .then(data => {
                 const sortData = data.sort((a, b) => b.rating - a.rating).slice(0, 5);
                 setServices(sortData);
+                console.log(sortData)
             })
     }, [])
 
     return (
         <div className='footer'>
-            <CDBFooter className="shadow" >
-                <CDBBox display="flex" flex="column" className="mx-auto py-5" style={{ width: '90%' }}>
-                    <CDBBox display="flex" justifyContent="between" className="flex-wrap">
-                        <CDBBox alignSelf="center">
-                            <a href="/" className="d-flex align-items-center p-0 text-dark">
-                                <img alt="logo" src={logo} width="250px" />
+            <footer className=" text-white">
+                <div className="container p-4">
 
-                            </a>
-                            <CDBBox className="mt-5" display="flex">
-                                <p>A haven for personal healing, growth, and discovery.</p>
-                            </CDBBox>
-                        </CDBBox>
-                        <CDBBox>
-                            <p className="h5 mb-4" style={{ fontWeight: '600' }}>
-                                Pages
-                            </p>
-                            <CDBBox display="flex" flex="column" style={{ cursor: 'pointer' }}>
-                                <CDBFooterLink  ><Link to='/'>Home</Link></CDBFooterLink>
-                                <CDBFooterLink  ><Link to='/services'>Services</Link></CDBFooterLink>
-                                <CDBFooterLink  ><Link to='/myreviews'>My Reviews</Link></CDBFooterLink>
-                                <CDBFooterLink  ><Link to='/addservice'>Add Service</Link></CDBFooterLink>
-                                <CDBFooterLink  ><Link to='/blogs'>Blogs</Link></CDBFooterLink>
-                                <CDBFooterLink  ><Link to='/login'>Login</Link></CDBFooterLink>
-                                <CDBFooterLink  ><Link to='/signup'>Signup</Link></CDBFooterLink>
-                            </CDBBox>
-                        </CDBBox>
-                        <CDBBox>
-                            <p className="h5 mb-4" style={{ fontWeight: '600' }}>
-                                Top Services
-                            </p>
-                            <CDBBox display="flex" flex="column" style={{ cursor: 'pointer' }}>
-                                {services.map(service => <CDBFooterLink  key={service._id}><Link to={`/services/${service._id}`}>{service.serviceName}</Link></CDBFooterLink>)}
+                    <section className="">
+                        <div className="row">
+                            <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
+                                <h5 className="text-uppercase">Pages</h5>
+                                <ul className="list-unstyled mb-0">
+                                    <li>
+                                        <Link to='/'>Home</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/services'>Services</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/blogs'>Blogs</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/login'>Login</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/signup'>Signup</Link>
+                                    </li>
 
-                            </CDBBox>
-                        </CDBBox>
-                        <CDBBox>
-                            <p className="h5 mb-4" style={{ fontWeight: '600' }}>
-                                Social
-                            </p>
-                            <CDBBox display="flex" flex="column" style={{ cursor: 'pointer', gap: '5px' }}>
-                                <CDBBtn flat color="dark" className="p-2">
-                                    <CDBIcon fab icon="facebook-f" />
-                                </CDBBtn>
-                                <CDBBtn flat color="dark" className="p-2">
-                                    <CDBIcon fab icon="twitter" />
-                                </CDBBtn>
-                                <CDBBtn flat color="dark" className="p-2">
-                                    <CDBIcon fab icon="instagram" />
-                                </CDBBtn>
-                            </CDBBox>
-                        </CDBBox>
-                    </CDBBox>
-                    <small className="text-center mt-5">&copy; MuscleMaster, 2022. All rights reserved.</small>
-                </CDBBox>
-            </CDBFooter>
+                                </ul>
+                            </div>
+
+                            <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
+                                <h5 className="text-uppercase">Top Services</h5>
+
+                                <ul className="list-unstyled mb-0">
+                                    {services.map(service => <li key={service._id}><Link to={`/services/${service._id}`}>{service.serviceName}</Link></li>)}
+                                </ul>
+                            </div>
+
+                            <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
+                                <h5 className="text-uppercase"></h5>
+                                <form action="">
+                                    <div className="row d-flex flex-column justify-content-center">
+                                        <div className="">
+                                            <p className="">
+                                                <strong>Sign up for our newsletter</strong>
+                                            </p>
+                                        </div>
+                                        <div className="">
+                                            <div className="form-outline form-white ">
+                                                <input type="email" id="form5Example21" className="form-control" />
+                                                <label className="form-label" for="form5Example21">Email address</label>
+                                            </div>
+                                        </div>
+                                        <div className="">
+
+                                            <button type="submit" className="btn btn-outline-light bg-primary mb-2">
+                                                Subscribe
+                                            </button>
+                                        </div>
+                                        <div className='d-flex social'>
+                                            <a href=""><BsFacebook /></a>
+                                            <a href=""><BsTwitter /></a>
+                                            <a href=""><BsLinkedin /></a>
+                                            <a href=""><BsInstagram /></a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
+                    © 2022 Copyright 
+                    <Link className="text-white" to='/'> MuscleMaster</Link>
+                </div>
+            </footer>
         </div>
     );
 };
