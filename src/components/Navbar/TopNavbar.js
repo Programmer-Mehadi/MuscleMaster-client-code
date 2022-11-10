@@ -33,16 +33,17 @@ const TopNavbar = () => {
 
                             <Link to='/' className='nav-link'>Home</Link>
                             <Link to='/services' className='nav-link'>Services</Link>
-                            <Link to='/blogs' className='nav-link'>Blogs</Link>
+
                             {
                                 user ? <>
                                     <Link to='/myreviews' className='nav-link'>My Reviews</Link>
                                     <Link to='/addservice' className='nav-link'>Add Service</Link>
+                                    <Link to='/blogs' className='nav-link'>Blogs</Link>
                                     <Link className='nav-link' onClick={signOut}>Logout</Link>
                                     <img src={user.photoURL} alt="profile" className='profile-img' />
                                 </>
                                     :
-                                    <> <Link to='/login' className='nav-link'>Login</Link>
+                                    <>    <Link to='/blogs' className='nav-link'>Blogs</Link> <Link to='/login' className='nav-link'>Login</Link>
                                         <Link to='/signup' className='nav-link'>Signup</Link></>
                             }
 

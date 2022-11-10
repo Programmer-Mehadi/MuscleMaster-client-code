@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../404.jpg'
+import useTitle from '../../hooks/useTitle';
 const ErrorPage = () => {
+    useTitle('Error')
     return (
         <div>
             <div className='d-flex flex-column justify-content-center align-items-center'>

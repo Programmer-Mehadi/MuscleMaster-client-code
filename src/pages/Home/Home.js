@@ -2,8 +2,10 @@ import React from 'react';
 import { Row } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
+import useTitle from '../../hooks/useTitle';
 import './Home.css';
 const Home = () => {
+    useTitle('Home')
     const services = useLoaderData()
 
     return (

@@ -5,7 +5,9 @@ import Form from 'react-bootstrap/Form';
 import { BsGoogle } from "react-icons/bs";
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../customContexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 const Signup = () => {
+    useTitle('Signup')
     const [error, setError] = useState(null);
     const [authError, setAuthError] = useState(null);
     const { user, providerLogin, createNewUser, updateUserInfo, userLogin, logOut } = useContext(AuthContext)

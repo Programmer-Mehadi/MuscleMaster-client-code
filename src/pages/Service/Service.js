@@ -1,22 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../customContexts/AuthProvider';
-import {  ToastContainer,toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../../hooks/useTitle';
 const Service = () => {
+
     const serviceData = useLoaderData();
     const [reviewRating, setReviewRating] = useState(5);
     const { _id, image, serviceName, rating, price, description } = serviceData;
+    useTitle(`${serviceName}`)
     const [reviews, setReviews] = useState([]);
     const { user } = useContext(AuthContext);
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${_id}`)
             .then(res => res.json())
-            .then(data =>
-                setReviews(data))
-    }, [])
+            .then(data => {
+                setReviews(data)
+            }
+            )
+    }, [reviews])
     const handleReviewSubmit = (e) => {
         e.preventDefault()
         const reviewText = e.target.reviewtext.value;
@@ -54,7 +58,7 @@ const Service = () => {
     }
     return (
         <div className='container'>
-              <ToastContainer />
+            <ToastContainer />
             <img src={image} className='w-100 my-4' style={{ height: '400px' }} alt="" />
             <h2 className='py-3'>{serviceName}</h2>
             <h4>Rating: {rating}</h4>

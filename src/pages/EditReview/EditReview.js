@@ -3,7 +3,9 @@ import { Form } from 'react-bootstrap';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../../hooks/useTitle';
 const EditReview = () => {
+    useTitle('Edit review')
     const review = useLoaderData();
     const { _id, reviewText, serviceName, rating } = review;
     const [reviewRating, setReviewRating] = useState(review.rating);

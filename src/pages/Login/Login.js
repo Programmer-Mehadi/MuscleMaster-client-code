@@ -5,9 +5,10 @@ import Form from 'react-bootstrap/Form';
 import { BsGoogle } from 'react-icons/bs';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../customContexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import './Login.css';
 const Login = () => {
-
+    useTitle('Login');
     const [error, setError] = useState(null);
     const { user, providerLogin, userLogin } = useContext(AuthContext)
     const location = useLocation()
@@ -50,7 +51,7 @@ const Login = () => {
         const password = event.target.password.value;
         console.log(email, password);
         userLogin(email, password)
-            .then(result => {            
+            .then(result => {
                 event.target.reset();
                 const user = result.user;
                 const currentUser = {

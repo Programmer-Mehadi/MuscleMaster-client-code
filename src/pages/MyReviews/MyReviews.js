@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../customContexts/AuthProvider';
-import {  ToastContainer,toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../../customContexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 const MyReviews = () => {
+    useTitle('MyReview')
     const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
     useEffect(() => {

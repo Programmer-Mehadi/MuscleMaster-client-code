@@ -7,8 +7,8 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
     const { user, loading } = useContext(AuthContext);
     if (loading) {
-        return <> <Spinner animation="border" />
-            <div>loading....</div> </>
+        return <div className="d-flex justify-content-center flex-column align-items-center mx-auto"> <Spinner animation="border" />
+            <div>loading....</div> </div>
     }
     if (!user) {
         return <Navigate to='/login' state={{ form: location }} replace></Navigate>;

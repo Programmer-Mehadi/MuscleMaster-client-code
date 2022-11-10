@@ -2,8 +2,10 @@ import React from 'react';
 import { Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
+import useTitle from '../../hooks/useTitle';
 
 const Services = () => {
+    useTitle('Services')
     const services = useLoaderData()
     return (
         <div className='container py-5'>
