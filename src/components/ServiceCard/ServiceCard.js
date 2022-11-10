@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -6,9 +6,11 @@ import Table from 'react-bootstrap/Table';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { Link } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
 
 import './ServiceCard.css';
 const ServiceCard = ({ service }) => {
+  
     const { _id, image, serviceName, rating, price, description } = service;
     return (
         <Col >

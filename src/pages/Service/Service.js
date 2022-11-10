@@ -8,7 +8,7 @@ import useTitle from '../../hooks/useTitle';
 const Service = () => {
 
     const serviceData = useLoaderData();
-    const [reviewRating, setReviewRating] = useState(5);
+    const [reviewRating, setReviewRating] = useState(1);
     const { _id, image, serviceName, rating, price, description } = serviceData;
     useTitle(`${serviceName}`)
     const [reviews, setReviews] = useState([]);
@@ -75,12 +75,12 @@ const Service = () => {
                                     <div><textarea name="reviewtext" id="" className='w-100' rows="3"></textarea> </div>
                                 </Form.Group>
                                 <h6 className='pt-3 pb-2'>Give Rating</h6>
-                                <select class="form-select w-25" aria-label="Default select example" onChange={handleRatingChange}>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5" selected>5</option>
+                                <select className="form-select w-25" aria-label="Default select example" onChange={handleRatingChange}>
+                                    <option defaultValue="1">1</option>
+                                    <option defaultValue="2">2</option>
+                                    <option defaultValue="3">3</option>
+                                    <option defaultValue="4">4</option>
+                                    <option defaultValue="5">5</option>
                                 </select>
                                 <button type='submit' className='btn btn-primary my-4'>Add Review</button>
                             </Form>
@@ -93,7 +93,7 @@ const Service = () => {
                     </div>
                     <div className='py-5'>
                         {
-                            reviews.map(review => <div className='py-2'>
+                            reviews.map(review => <div className='py-2' key={review._id}>
                                 <div className='d-flex justify-content-between'>
                                     <div className='d-flex items-align-center'>
                                         <img className='border border-dark' src={review.userPhoto} alt="" style={{ height: '40px', width: '40px', borderRadius: '5%' }} />

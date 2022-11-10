@@ -7,7 +7,7 @@ import './Home.css';
 const Home = () => {
     useTitle('Home')
     const services = useLoaderData()
-
+    
     return (
         <div className='home-container container py-5'>
             <div className='row '>
@@ -27,7 +27,7 @@ const Home = () => {
                     {Array.from({ length: 1 }).map((_, idx) => (
                         <>
                             {services !== null ? services.map((service) =>
-                                <ServiceCard service={service}></ServiceCard>
+                                <ServiceCard key={service._id} service={service}></ServiceCard>
                             ) : ''}
                         </>
                     ))}

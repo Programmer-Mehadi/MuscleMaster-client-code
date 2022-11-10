@@ -2,6 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
 import { BsGoogle } from 'react-icons/bs';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../customContexts/AuthProvider';
@@ -10,7 +11,8 @@ import './Login.css';
 const Login = () => {
     useTitle('Login');
     const [error, setError] = useState(null);
-    const { user, providerLogin, userLogin } = useContext(AuthContext)
+    const [thisLoading,setThisLoading]=useState(false)
+    const { user, providerLogin, userLogin, loading } = useContext(AuthContext)
     const location = useLocation()
     const from = location?.state?.form?.pathname || '/';
     const navigate = useNavigate()
@@ -18,6 +20,7 @@ const Login = () => {
         return <Navigate to="/"></Navigate>
     }
     const handleGoogleSignin = () => {
+        setThisLoading(true)
         const provider = new GoogleAuthProvider();
         providerLogin(provider)
             .then(result => {
@@ -37,15 +40,18 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         localStorage.setItem("MuscleMaster-token", data.token);
+                        setThisLoading(false)
                         navigate(from, { replace: true });
                     })
 
             })
             .catch(error => {
                 console.log(error);
+                setThisLoading(false)
             })
     }
     const login = (event) => {
+        setThisLoading(true)
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
@@ -68,10 +74,12 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         localStorage.setItem("MuscleMaster-token", data.token);
+                        setThisLoading(false)
                         navigate(from, { replace: true });
                     })
             })
             .catch(error => {
+                setThisLoading(false)
                 const errorText = error.code;
                 console.log(error.code);
                 if ('auth/user-not-found' === errorText) {
@@ -85,7 +93,11 @@ const Login = () => {
 
     return (
         <div className='container mw-50 form-section'>
-            <Form className='form mw-50 h-100 mx-auto shadow' onSubmit={login} >
+            {
+                thisLoading && <div className="d-flex justify-content-center flex-column align-items-center mx-auto"> <Spinner animation="border" />
+                    <div>loading....</div> </div>
+            }
+            <Form className='form mw-50 mx-auto shadow' onSubmit={login} >
                 <h2 className='text-center pb-3'>Login</h2>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

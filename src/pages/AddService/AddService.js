@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useTitle from '../../hooks/useTitle';
 const AddService = () => {
     useTitle('Add service')
-    const [reviewRating, setReviewRating] = useState(5);
+    const [reviewRating, setReviewRating] = useState(1);
 
     const handleAddService = (event) => {
         event.preventDefault();
@@ -42,33 +41,33 @@ const AddService = () => {
             <div>
                 <form onSubmit={handleAddService} className='rounded d-flex flex-column gap-3 p-4 my-4 shadow mx-auto' style={{ maxWidth: '500px' }}>
                     <h2 className='text-center py-2'>Add New Services</h2>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Service Name:</label>
-                        <input name='serviceName' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter service name" required />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Service Name:</label>
+                        <input name='serviceName' type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter service name" required />
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Image:</label>
-                        <input name="image" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter image url" required />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Image:</label>
+                        <input name="image" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter image url" required />
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Price:</label>
-                        <input name="price" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter price" required />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Price:</label>
+                        <input name="price" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter price" required />
                     </div>
-                    <div class="form-group d-flex">
+                    <div className="form-group d-flex">
                         <span className='me-2'>Rating: </span>
-                        <select class="form-select w-25" aria-label="Default select example" onChange={handleRatingChange} required>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5" selected>5</option>
+                        <select className="form-select w-25" aria-label="Default select example" onChange={handleRatingChange} required>
+                            <option defaultValue="1">1</option>
+                            <option defaultValue="2">2</option>
+                            <option defaultValue="3">3</option>
+                            <option defaultValue="4">4</option>
+                            <option defaultValue="5">5</option>
                         </select>
                     </div>
                     <div className="form-group d-flex flex-column">
-                        <label for="exampleInputEmail1">Description: </label>
+                        <label htmlFor="exampleInputEmail1">Description: </label>
                         <textarea className='w-100' name="description" id="" rows="3" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Service</button>
+                    <button type="submit" className="btn btn-primary">Add Service</button>
                 </form>
             </div>
         </div>

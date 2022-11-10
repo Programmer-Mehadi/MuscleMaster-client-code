@@ -53,21 +53,21 @@ const EditReview = () => {
                     <div className='w-100'><textarea defaultValue={reviewText} name="reviewtext" id="" className='w-100' rows="3" required></textarea> </div>
                 </Form.Group>
                 <h6 className='pt-3 pb-2'>Give Rating: </h6>
-                <select class="form-select w-25" aria-label="Default select example" required onChange={handleRatingChange}>
+                <select className="form-select w-25" aria-label="Default select example" required onChange={handleRatingChange}>
                     {
-                        reviewRating == "1" ? <option value="1" selected>1</option> : <option value="1">1</option>
+                        reviewRating == "1" ? <option defaultValue="1" selected>1</option> : <option defaultValue="1">1</option>
                     }
                     {
-                        reviewRating == "2" ? <option value="2" selected>2</option> : <option value="2">2</option>
+                        reviewRating == "2" ? <option defaultValue="2" selected>2</option> : <option defaultValue="2">2</option>
                     }
                     {
-                        reviewRating == "3" ? <option value="2" selected>3</option> : <option value="3">3</option>
+                        reviewRating == "3" ? <option defaultValue="2" selected>3</option> : <option defaultValue="3">3</option>
                     }
                     {
-                        reviewRating == "4" ? <option value="4" selected>4</option> : <option value="4">4</option>
+                        reviewRating == "4" ? <option defaultValue="4" selected>4</option> : <option defaultValue="4">4</option>
                     }
                     {
-                        reviewRating == "5" ? <option value="5" selected>5</option> : <option value="5">5</option>
+                        reviewRating == "5" ? <option defaultValue="5" selected>5</option> : <option defaultValue="5">5</option>
                     }
 
                 </select>

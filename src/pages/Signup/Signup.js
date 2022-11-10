@@ -2,12 +2,14 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
 import { BsGoogle } from "react-icons/bs";
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../customContexts/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 const Signup = () => {
     useTitle('Signup')
+    const [thisLoading,setThisLoading]=useState(false)
     const [error, setError] = useState(null);
     const [authError, setAuthError] = useState(null);
     const { user, providerLogin, createNewUser, updateUserInfo, userLogin, logOut } = useContext(AuthContext)
@@ -18,6 +20,7 @@ const Signup = () => {
         return <Navigate to="/"></Navigate>
     }
     const handleGoogleSignin = () => {
+        setThisLoading(true);
         const provider = new GoogleAuthProvider();
         providerLogin(provider)
             .then(result => {
@@ -44,6 +47,7 @@ const Signup = () => {
             })
     }
     const createUser = (event) => {
+        setThisLoading(true);
         event.preventDefault();
         setError(null);
         setAuthError(null);
@@ -88,19 +92,23 @@ const Signup = () => {
                                             .then(res => res.json())
                                             .then(data => {
                                                 localStorage.setItem("MuscleMaster-token", data.token);
+                                                setThisLoading(false)
                                                 navigate(from, { replace: true });
                                             })
                                     })
                                     .catch(error => {
+                                        setThisLoading(false)
                                         console.log(error);
                                     })
                             })
                             .catch(error => {
+                                setThisLoading(false)
                                 console.log(error);
                             });
 
                     })
                     .catch(error => {
+                        setThisLoading(false)
                         console.log(error);
                         const erro = error.code;
                         console.log(erro);
@@ -110,15 +118,21 @@ const Signup = () => {
                     })
             }
             else {
+                setThisLoading(false)
                 setError('Password and confirm password shold be same');
             }
         }
         else {
+            setThisLoading(false)
             setError('Password should be at least 6 characters');
         }
     }
     return (
         <div className='container mw-50 py-4 form-section'>
+             {
+                thisLoading && <div className="d-flex justify-content-center flex-column align-items-center mx-auto"> <Spinner animation="border" />
+                    <div>loading....</div> </div>
+            }
             <Form className='form mw-50 h-100 mx-auto shadow' onSubmit={createUser}>
                 <h2 className='text-center pb-3'>Signup</h2>
 
