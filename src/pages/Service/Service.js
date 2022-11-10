@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../customContexts/AuthProvider';
+import {  ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Service = () => {
     const serviceData = useLoaderData();
     const [reviewRating, setReviewRating] = useState(5);
@@ -41,6 +44,7 @@ const Service = () => {
                         e.target.reset()
                         const newReviews = [...reviews, review];
                         setReviews(newReviews);
+                        toast("Review added successfully!");
                     }
                 })
         }
@@ -50,6 +54,7 @@ const Service = () => {
     }
     return (
         <div className='container'>
+              <ToastContainer />
             <img src={image} className='w-100 my-4' style={{ height: '400px' }} alt="" />
             <h2 className='py-3'>{serviceName}</h2>
             <h4>Rating: {rating}</h4>

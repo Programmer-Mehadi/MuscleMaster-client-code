@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../customContexts/AuthProvider';
+import {  ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const MyReviews = () => {
     const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
@@ -29,6 +31,7 @@ const MyReviews = () => {
                 if (data.deletedCount > 0) {
                     const newReviews = reviews.filter(review => review._id !== id);
                     setReviews(newReviews);
+                    toast("Review Delete Successfully!");
                 }
 
             })
@@ -36,6 +39,7 @@ const MyReviews = () => {
 
     return (
         <div className='container py-5'>
+                <ToastContainer />
             <h4 className='text-center'>All Reviews</h4>
 
             <div> {

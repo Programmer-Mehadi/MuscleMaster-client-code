@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddService = () => {
-
     const [reviewRating, setReviewRating] = useState(5);
 
-    const handleRatingChange = (event) => {
-        setReviewRating(event.target.value)
-    }
     const handleAddService = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -15,10 +13,8 @@ const AddService = () => {
         const rating = reviewRating;
         const price = "$" + form.price.value;
         const description = form.description.value;
-
         const newService = { serviceName, image, rating, price, description };
 
-        console.log(newService)
         fetch('http://localhost:5000/addservice', {
             method: 'POST',
             headers: {
@@ -28,17 +24,19 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                if (data.acknowledge) {
+                if (data.acknowledged === true) {
+                    toast("Service Added Successfully!");
                     form.reset();
+
                 }
             })
-
-
-
+    }
+    const handleRatingChange = (event) => {
+        setReviewRating(event.target.value)
     }
     return (
         <div className='container'>
+            <ToastContainer />
             <div>
                 <form onSubmit={handleAddService} className='rounded d-flex flex-column gap-3 p-4 my-4 shadow mx-auto' style={{ maxWidth: '500px' }}>
                     <h2 className='text-center py-2'>Add New Services</h2>

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { Navigate, useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const EditReview = () => {
     const review = useLoaderData();
     const { _id, reviewText, serviceName, rating } = review;
     const [reviewRating, setReviewRating] = useState(review.rating);
     const [updatedReview, setUdatedReview] = useState(review);
+    const from =  '/myreviews';
     const navigate = useNavigate();
     const editReview = (e) => {
         e.preventDefault()
@@ -24,9 +27,10 @@ const EditReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-           
+
                 if (data.modifiedCount > 0) {
-                    return <Navigate to="/"></Navigate>
+                    toast("Review Edit Successfully!");
+                    return navigate(from, { replace: true });
                 }
             })
     }
@@ -35,8 +39,9 @@ const EditReview = () => {
     }
     return (
         <div>
-            <h2 className='py-5 text-center'>Edit review</h2>
-            <Form className='py-5 mb-5 shadow rounded container edit-review mx-auto' style={{maxWidth:'500px'}} onSubmit={editReview}>
+            <ToastContainer />
+            <Form className='py-3 my-5 shadow rounded container edit-review mx-auto' style={{ maxWidth: '500px' }} onSubmit={editReview}>
+                <h2 className='py-2 text-center'>Edit review</h2>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <div className='pt-3 pb-2 d-flex ' ><h6 className='me-2 '>Service Name:</h6> {serviceName} </div>
 
@@ -54,13 +59,13 @@ const EditReview = () => {
                         reviewRating == "2" ? <option value="2" selected>2</option> : <option value="2">2</option>
                     }
                     {
-                        reviewRating== "3" ? <option value="2" selected>3</option> : <option value="3">3</option>
+                        reviewRating == "3" ? <option value="2" selected>3</option> : <option value="3">3</option>
                     }
                     {
-                        reviewRating== "4" ? <option value="4" selected>4</option> : <option value="4">4</option>
+                        reviewRating == "4" ? <option value="4" selected>4</option> : <option value="4">4</option>
                     }
                     {
-                        reviewRating== "5" ? <option value="5" selected>5</option> : <option value="5">5</option>
+                        reviewRating == "5" ? <option value="5" selected>5</option> : <option value="5">5</option>
                     }
 
                 </select>
