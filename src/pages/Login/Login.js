@@ -30,7 +30,7 @@ const Login = () => {
                     email: user.email,
                     uid: user.uid
                 }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://musclemaster-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -64,7 +64,7 @@ const Login = () => {
                     email: user.email,
                     uid: user.uid
                 }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://musclemaster-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
