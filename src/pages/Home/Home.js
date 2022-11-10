@@ -30,6 +30,9 @@ const Home = () => {
                 ))}
             </Row>
             </div>
+            <div className='d-flex justify-content-center'>
+            <Link to='/services'><button className='btn btn-primary  border-0 w-auto'>View All Services</button></Link>
+            </div>
         </div>
     );
 };
