@@ -20,7 +20,7 @@ const TopNavbar = () => {
     return (
         <div>
             <Navbar className='navbar mt-0'  expand="lg" style={{ height: '64px',position:'relative' }}>
-                <Container fluid className='container mt-0' style={{ height: '64px',position:'absolute' }}>
+                <Container fluid className='container' style={{ height: '64px',position:'absolute' }}>
                     <Navbar.Brand href="#"><img style={{ width: '250px', height: '58px' }} src={logo} alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll" className=''>

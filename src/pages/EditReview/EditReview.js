@@ -6,7 +6,7 @@ const EditReview = () => {
     const { _id, reviewText, serviceName, rating } = review;
     const [reviewRating, setReviewRating] = useState(review.rating);
     const [updatedReview, setUdatedReview] = useState(review);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const editReview = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -36,7 +36,7 @@ const EditReview = () => {
     return (
         <div>
             <h2 className='py-5 text-center'>Edit review</h2>
-            <Form className='container' onSubmit={editReview}>
+            <Form className='py-5 mb-5 shadow rounded container edit-review mx-auto' style={{maxWidth:'500px'}} onSubmit={editReview}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <div className='pt-3 pb-2 d-flex ' ><h6 className='me-2 '>Service Name:</h6> {serviceName} </div>
 
