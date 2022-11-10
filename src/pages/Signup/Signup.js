@@ -19,8 +19,23 @@ const Signup = () => {
         const provider = new GoogleAuthProvider();
         providerLogin(provider)
             .then(result => {
-                console.log(result);
-                navigate(from, { replace: true });
+                const user = result.user;
+                const currentUser = {
+                    email: user.email,
+                    uid: user.uid
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem("MuscleMaster-token", data.token);
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(error => {
                 console.log(error);
@@ -56,7 +71,23 @@ const Signup = () => {
                             .then(result => {
                                 userLogin(email, password)
                                     .then(result => {
-                                        navigate(from, { replace: true });
+                                        const user = result.user;
+                                        const currentUser = {
+                                            email: user.email,
+                                            uid: user.uid
+                                        }
+                                        fetch('http://localhost:5000/jwt', {
+                                            method: 'POST',
+                                            headers: {
+                                                'content-type': 'application/json'
+                                            },
+                                            body: JSON.stringify(currentUser)
+                                        })
+                                            .then(res => res.json())
+                                            .then(data => {
+                                                localStorage.setItem("MuscleMaster-token", data.token);
+                                                navigate(from, { replace: true });
+                                            })
                                     })
                                     .catch(error => {
                                         console.log(error);
@@ -97,7 +128,7 @@ const Signup = () => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control name="email" type="email" placeholder="email" required />
-                     
+
                 </Form.Group>
 
 

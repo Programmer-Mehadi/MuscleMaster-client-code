@@ -21,7 +21,24 @@ const Login = () => {
         providerLogin(provider)
             .then(result => {
                 console.log(result);
-                navigate(from, { replace: true });
+                const user = result.user;
+                const currentUser = {
+                    email: user.email,
+                    uid: user.uid
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem("MuscleMaster-token", data.token);
+                        navigate(from, { replace: true });
+                    })
+
             })
             .catch(error => {
                 console.log(error);
@@ -33,10 +50,25 @@ const Login = () => {
         const password = event.target.password.value;
         console.log(email, password);
         userLogin(email, password)
-            .then(result => {
-                console.log(result);
+            .then(result => {            
                 event.target.reset();
-                navigate(from, { replace: true });
+                const user = result.user;
+                const currentUser = {
+                    email: user.email,
+                    uid: user.uid
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem("MuscleMaster-token", data.token);
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(error => {
                 const errorText = error.code;

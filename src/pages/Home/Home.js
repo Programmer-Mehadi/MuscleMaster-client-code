@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
 const Home = () => {
     const services = useLoaderData()
-    console.log(services);
+ 
     return (
         <div className='home-container container py-5'>
             <div className='row'>

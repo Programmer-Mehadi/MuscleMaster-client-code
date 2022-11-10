@@ -3,12 +3,23 @@ import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../customContexts/AuthProvider';
 const MyReviews = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/myreviews/${user.uid}`)
+        fetch(`http://localhost:5000/myreviews/${user.uid}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('MuscleMaster-token')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setReviews(data))
+            .then(data => {
+                if (data?.message) {
+                    logOut()
+                }
+                else {
+                    setReviews(data)
+                }
+            })
     }, [])
     const deleteReview = (id) => {
         console.log(id);
