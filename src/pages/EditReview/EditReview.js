@@ -20,7 +20,7 @@ const EditReview = () => {
         newReview['rating'] = reviewRating;
 
         setUdatedReview(newReview)
-        fetch(`http://localhost:5000/editreview/${_id}`, {
+        fetch(`https://musclemaster-server.vercel.app/editreview/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

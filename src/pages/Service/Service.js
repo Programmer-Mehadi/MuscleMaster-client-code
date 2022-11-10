@@ -14,7 +14,7 @@ const Service = () => {
     const [reviews, setReviews] = useState([]);
     const { user } = useContext(AuthContext);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${_id}`)
+        fetch(`https://musclemaster-server.vercel.app/reviews/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
@@ -34,7 +34,7 @@ const Service = () => {
             review['userPhoto'] = user.photoURL;
             review['rating'] = reviewRating;
             review['time'] = new Date();
-            fetch('http://localhost:5000/addreview', {
+            fetch('https://musclemaster-server.vercel.app/addreview', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

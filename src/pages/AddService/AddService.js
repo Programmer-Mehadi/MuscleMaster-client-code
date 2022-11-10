@@ -16,7 +16,7 @@ const AddService = () => {
         const description = form.description.value;
         const newService = { serviceName, image, rating, price, description };
 
-        fetch('http://localhost:5000/addservice', {
+        fetch('https://musclemaster-server.vercel.app/addservice', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

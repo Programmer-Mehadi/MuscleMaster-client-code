@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                loader: ()=> fetch('http://localhost:5000/services?limit=3'),
+                loader: ()=> fetch('https://musclemaster-server.vercel.app/services?limit=3'),
                 element: <Home></Home>
             },
             {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/services/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
+                loader: ({ params }) => fetch(`https://musclemaster-server.vercel.app/services/${params.id}`),
                 element: <Service></Service>
             },
             {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/editreview/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`),
+                loader: ({ params }) => fetch(`https://musclemaster-server.vercel.app/review/${params.id}`),
                 element: <PrivateRoute><EditReview></EditReview></PrivateRoute>
             },
             {

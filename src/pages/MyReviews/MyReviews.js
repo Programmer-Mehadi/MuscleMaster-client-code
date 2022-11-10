@@ -10,7 +10,7 @@ const MyReviews = () => {
     const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/myreviews/${user.uid}`, {
+        fetch(`https://musclemaster-server.vercel.app/myreviews/${user.uid}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('MuscleMaster-token')}`
             }
@@ -27,7 +27,7 @@ const MyReviews = () => {
     }, [])
     const deleteReview = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/deletereview/${id}`)
+        fetch(`https://musclemaster-server.vercel.app/deletereview/${id}`)
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {

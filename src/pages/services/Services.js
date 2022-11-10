@@ -12,7 +12,7 @@ const Services = () => {
 
     useEffect(() => {
         setThisLoading(true)
-        fetch('http://localhost:5000/services')
+        fetch('https://musclemaster-server.vercel.app/services')
             .then(res => res.json())
             .then(data => {
                 console.log(data)
