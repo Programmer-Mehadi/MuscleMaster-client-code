@@ -5,7 +5,7 @@ import './Footer.css';
 const Footer = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://musclemaster-server.vercel.app/services')
             .then(res => res.json())
             .then(data => {
                 const sortData = data.sort((a, b) => b.rating - a.rating).slice(0, 5);
