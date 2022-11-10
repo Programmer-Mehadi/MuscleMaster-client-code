@@ -8,8 +8,8 @@ const Home = () => {
 
     return (
         <div className='home-container container py-5'>
-            <div className='row gap-4'>
-                <div className='col-lg-6 d-flex flex-column justify-content-center'>
+            <div className='row '>
+                <div className='col-lg-6 d-flex flex-column justify-content-center mb-4'>
                     <h2>Massage Is Therapy</h2>
                     <p>Whether you're looking for a relaxing massage to rejuvenate your spirit or need a therapeutic massage to relieve muscle pain, our licensed Massage Therapists will customize your massage to your individual needs!</p>
                     <div>
@@ -35,7 +35,7 @@ const Home = () => {
                 <Link to='/services'><button className='btn btn-primary  border-0 w-auto'>See All</button></Link>
             </div>
             <div className='row py-5 video'>
-                <div className='col-lg-6'>
+                <div className='col-lg-6 mb-4'>
                     <h2>Feel the difference of feelings good!</h2>
                     <p className="mt-2">The benefits of receiving massages are cumulative and much more effective when customized with a regular treatment plan. The more often and consistently you receive a massage, the better your body can feel. Join our Benefits Program; a cost-effective way to integrate regular, custom massage therapy and skincare services into your health regimen. Become a Member and save up to 25% on services!
 

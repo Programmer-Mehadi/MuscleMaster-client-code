@@ -19,8 +19,8 @@ const TopNavbar = () => {
     }
     return (
         <div>
-            <Navbar className='navbar mt-0'  expand="lg" style={{ height: '64px',position:'relative' }}>
-                <Container fluid className='container' style={{ height: '64px',position:'absolute' }}>
+            <Navbar className='navbar mt-0' expand="lg" style={{ height: '64px', position: 'relative' }}>
+                <Container fluid className='container' style={{ height: '64px', position: 'absolute' }}>
                     <Navbar.Brand href="#"><img style={{ width: '250px', height: '58px' }} src={logo} alt="" /></Navbar.Brand>
                     <Navbar.Toggle className="bg-white" aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll"
@@ -33,11 +33,11 @@ const TopNavbar = () => {
 
                             <Link to='/' className='nav-link'>Home</Link>
                             <Link to='/services' className='nav-link'>Services</Link>
-                            <Link to='/myreviews' className='nav-link'>My Reviews</Link>
-                            <Link to='/addservice' className='nav-link'>Add Service</Link>
                             <Link to='/blogs' className='nav-link'>Blogs</Link>
                             {
                                 user ? <>
+                                    <Link to='/myreviews' className='nav-link'>My Reviews</Link>
+                                    <Link to='/addservice' className='nav-link'>Add Service</Link>
                                     <Link className='nav-link' onClick={signOut}>Logout</Link>
                                     <img src={user.photoURL} alt="profile" className='profile-img' />
                                 </>
