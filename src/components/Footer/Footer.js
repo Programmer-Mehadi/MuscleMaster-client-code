@@ -10,7 +10,7 @@ const Footer = () => {
             .then(data => {
                 const sortData = data.sort((a, b) => b.rating - a.rating).slice(0, 5);
                 setServices(sortData);
-                console.log(sortData)
+               
             })
     }, [])
 
