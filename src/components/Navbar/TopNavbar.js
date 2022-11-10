@@ -22,8 +22,9 @@ const TopNavbar = () => {
             <Navbar className='navbar mt-0'  expand="lg" style={{ height: '64px',position:'relative' }}>
                 <Container fluid className='container' style={{ height: '64px',position:'absolute' }}>
                     <Navbar.Brand href="#"><img style={{ width: '250px', height: '58px' }} src={logo} alt="" /></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="navbarScroll" />
-                    <Navbar.Collapse id="navbarScroll" className=''>
+                    <Navbar.Toggle className="bg-white" aria-controls="navbarScroll" />
+                    <Navbar.Collapse id="navbarScroll"
+                        className='navbar-collapse index-300'>
                         <Nav
                             className="ms-auto my-auto h6  my-lg-0 font-weight-bold flex align-items-center "
                             style={{ minHeight: '100px', color: 'white' }}

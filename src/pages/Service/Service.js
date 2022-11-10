@@ -27,7 +27,6 @@ const Service = () => {
             review['userPhoto'] = user.photoURL;
             review['rating'] = reviewRating;
             review['time'] = new Date();
-            console.log(review)
             fetch('http://localhost:5000/addreview', {
                 method: 'POST',
                 headers: {
@@ -40,6 +39,8 @@ const Service = () => {
                     console.log(data)
                     if (data.acknowledged) {
                         e.target.reset()
+                        const newReviews = [...reviews, review];
+                        setReviews(newReviews);
                     }
                 })
         }
@@ -95,6 +96,9 @@ const Service = () => {
                                 <p style={{ marginLeft: '46px' }}>{review.reviewText}</p>
                                 <hr />
                             </div>)
+                        }
+                        {
+                            reviews.length == 0 && <h2>No Reviews</h2>
                         }
                     </div>
                 </div>

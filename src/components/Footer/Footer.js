@@ -53,7 +53,7 @@ const Footer = () => {
 
                             <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
                                 <h5 className="text-uppercase"></h5>
-                                <form action="">
+                                <div>
                                     <div className="row d-flex flex-column justify-content-center">
                                         <div className="">
                                             <p className="">
@@ -79,7 +79,7 @@ const Footer = () => {
                                             <a href=""><BsInstagram /></a>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </section>

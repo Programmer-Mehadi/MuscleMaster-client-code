@@ -12,7 +12,7 @@ const ServiceCard = ({ service }) => {
     const { _id, image, serviceName, rating, price, description } = service;
     return (
         <Col >
-            <Card className="shadow rounded-0" style={{ marginBottom: '10px', minHeight: '450px' }}>
+            <Card className="shadow rounded-0" style={{ marginBottom: '10px', minHeight: '450px',zIndex:'3' }}>
                 <PhotoProvider>
                     <PhotoView src={image}>
                         <img src={image} alt="" className='p-3 image' style={{ height: '200px' }} />
