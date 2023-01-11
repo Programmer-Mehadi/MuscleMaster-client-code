@@ -5,7 +5,7 @@ const Contactus = () => {
     useTitle('Contactus')
     return (
         <div className='container'>
-            <h2 className='py-4 text-center '>Contact Us</h2>
+            <h2 className='py-4 text-center text-uppercase '>Contact Us</h2>
             <form className='py-5  ' style={{ maxWidth: '700px', margin: 'auto' }}>
                 <div class="form-group mb-3">
                     <label for="exampleInputEmail1">Full Name</label>
@@ -22,10 +22,10 @@ const Contactus = () => {
                     <textarea required className='w-100 ps-3' placeholder='Type here '></textarea>
                 </div>
                 <div class="form-check mb-3">
-                    <input required  type="checkbox" class="form-check-input" id="exampleCheck1" />
+                    <input required type="checkbox" class="form-check-input" id="exampleCheck1" />
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
-                <button  class="btn btn-primary">Send Message</button>
+                <button class="btn btn-primary">Send Message</button>
             </form>
             <br />
             <br />
